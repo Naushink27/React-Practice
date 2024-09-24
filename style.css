@@ -1,0 +1,131 @@
+.NavContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Added to vertically center the logo and items */
+    height: 100px;
+    border: 1px solid black;
+    padding: 0 2rem; /* Added padding for better spacing */
+}
+
+.LogoContainer {
+    height: 100%; /* Ensures the logo container takes full height */
+}
+
+.logo {
+    height: 100%;
+    width: auto; /* Ensures the logo scales proportionally */
+}
+
+.Navitem {
+    display: flex;
+    align-items: center; /* Center the items vertically */
+}
+
+.item {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    justify-content: center;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.item li {
+    font-size: 25px;
+    cursor: pointer; /* Adds a pointer cursor on hover */
+}
+
+.bodyContainer {
+    margin-top: 2rem;
+    padding: 0 2rem; /* Added padding for better spacing */
+    max-height: 1000px; /* Control the maximum height */
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.restrauntContainer {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+}
+
+.card1 {
+    width: 250px; /* Set a fixed width for consistency */
+    background-color: #f0f0f0;
+    padding: 1rem; /* Add padding for content spacing */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: transform 0.2s, border 0.2s; /* Smooth transition */
+}
+
+.card1:hover {
+    border: 2px solid black;
+    cursor: pointer;
+    transform: scale(1.05); /* Add a scale effect on hover */
+}
+
+.resImg {
+    width: 100%; /* Ensure the image takes full width */
+    height: auto; /* Keep image proportions */
+    margin-bottom: 1rem; /* Add spacing below the image */
+}
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Adjust gap between cards */
+  }
+  
+  .shimmer-card {
+    width: 200px; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    background: #f0f0f0;
+    border-radius: 8px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shimmer-title,
+  .shimmer-image,
+  .shimmer-rating,
+  .shimmer-cost,
+  .shimmer-delivery,
+  .shimmer-cuisines {
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 400% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+  }
+  
+  .shimmer-title {
+    height: 20px;
+    width: 80%;
+    margin-bottom: 10px;
+  }
+  
+  .shimmer-image {
+    height: 150px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .shimmer-rating,
+  .shimmer-cost,
+  .shimmer-delivery,
+  .shimmer-cuisines {
+    height: 15px;
+    width: 60%;
+    margin-bottom: 5px;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  

@@ -38,7 +38,7 @@
 .bodyContainer {
     margin-top: 2rem;
     padding: 0 2rem; /* Added padding for better spacing */
-    max-height: 1000px; /* Control the maximum height */
+    max-height: 10000px; /* Control the maximum height */
     overflow-y: scroll;
     overflow-x: hidden;
 }

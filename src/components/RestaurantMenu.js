@@ -24,7 +24,8 @@ const RestaurantMenu = () => {
   // Using optional chaining to safely access deeply nested properties
   const restaurantInfo = resInfo?.cards?.[2]?.card?.card?.info;
 
-  // Destructure properties if `restaurantInfo` exists
+console.log(resInfo?.cards[4]?.groupedCard?.cardGrouMap?.REGULAR?.cards[2]?.card?.card?.itemCard) 
+// Destructure properties if `restaurantInfo` exists
   const { name, costForTwoMessage, cuisines } = restaurantInfo || {};
 
   // If `resInfo` is still null, display the Shimmer component (loading state)

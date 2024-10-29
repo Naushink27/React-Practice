@@ -1,41 +1,49 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { useParams } from "react-router-dom";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
+  const [ResInfo, setResInfo] = useState(null);
+  const { resId } = useParams();
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
+  const fetchmenu = async () => {
     try {
       const data = await fetch(
-        "https://www.swiggy.com/dapi/menu/pL?page-type=REGULAR_MENU&COMPLETE-MENU=TRUE&lat=12.9351929&lng=77.62448869999999&restaurantId=425&submitAction=ENTER"
+        "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=" +
+          resId +
+          "&catalog_qa=undefined&submitAction=ENTER"
       );
       const json = await data.json();
       console.log(json);
       setResInfo(json.data);
     } catch (error) {
-      console.error("Error fetching menu:", error);
+      console.error("Failed to fetch menu:", error);
     }
   };
 
-  // Using optional chaining to safely access deeply nested properties
-  const restaurantInfo = resInfo?.cards?.[2]?.card?.card?.info;
+  useEffect(() => {
+    fetchmenu();
+  }, [resId]); // Add resId as a dependency
 
-console.log(resInfo?.cards[4]?.groupedCard?.cardGrouMap?.REGULAR?.cards[2]?.card?.card?.itemCard) 
-// Destructure properties if `restaurantInfo` exists
-  const { name, costForTwoMessage, cuisines } = restaurantInfo || {};
-
-  // If `resInfo` is still null, display the Shimmer component (loading state)
-  if (resInfo === null) return <Shimmer />;
+  if (ResInfo === null) return <Shimmer />;
 
   return (
-    <div className="Menu">
-      <h1>{name || "Restaurant Name"}</h1>
-      <h3>{cuisines?.join(", ") || "Cuisines not available"}</h3>
-      <h5>{costForTwoMessage || "Cost information not available"}</h5>
+    <div className="menuContainer">
+      <h1 className="restaurantName">{ResInfo?.cards[2]?.card?.card?.info?.name}</h1>
+      <div className="menuTable">
+        <h1 className="menuTable__avgRating">{ResInfo?.cards[2]?.card?.card?.info?.avgRatingString}</h1>
+        <h1 className="menuTable__cost">{ResInfo?.cards[2]?.card?.card?.info?.costForTwoMessage}</h1>
+      </div>
+      <h1>Recommended</h1>
+      <ul className="menuList">
+        {ResInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards?.map(
+          (item, index) => (
+            <li key={index} className="menuList__item">
+              {item?.card?.info?.name}
+            </li>
+          )
+        )}
+      </ul>
     </div>
   );
 };

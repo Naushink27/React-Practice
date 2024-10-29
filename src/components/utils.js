@@ -660,3 +660,4 @@ export const reslist=[
         "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
     }
   ]
+  export  const Menu_Api="https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=3241&catalog_qa=undefined&submitAction=ENTER"

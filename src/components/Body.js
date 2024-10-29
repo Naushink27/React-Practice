@@ -1,7 +1,7 @@
 import RestrauntCard from "./RestrauntCard"; 
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-
+import { Link } from "react-router-dom";
 const Body = () => {
   const [ListofRest, setListofRest] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
@@ -15,7 +15,7 @@ const Body = () => {
   const fetchData = async () => {
     setLoading(true); // Start loading
     try {
-      const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448869999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
       const json = await data.json();
       console.log("Fetched Data:", json);
 
@@ -64,7 +64,9 @@ const Body = () => {
           <p>No restaurants found.</p>
         ) : (
           filteredList.map((restaurant) => (
-            <RestrauntCard key={restaurant.id} resData={restaurant} />
+            <Link key={restaurant.id} to={"/restaurant/" + restaurant.info.id}> 
+            <RestrauntCard resData={restaurant} />
+          </Link>
           ))
         )}
       </div>

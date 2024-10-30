@@ -355,3 +355,12 @@ button:hover {
   border: 1px solid #ccc;
   text-align: center;
 }
+.user_Card{
+  padding: 10px;
+  border: 1px solid black;
+  background-color: #ddd;
+  width: 50%;
+}
+.userCards{
+  display: flex;
+}

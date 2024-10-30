@@ -63,9 +63,9 @@ const Body = () => {
         {filteredList.length === 0 ? (
           <p>No restaurants found.</p>
         ) : (
-          filteredList.map((restaurant) => (
-            <Link key={restaurant.id} to={"/restaurant/" + restaurant.info.id}> 
-            <RestrauntCard resData={restaurant} />
+          filteredList.map((restaurants) => (
+            <Link key={restaurants.id} to={"/restaurants/" + restaurants.info.id}> 
+            <RestrauntCard resData={restaurants} />
           </Link>
           ))
         )}

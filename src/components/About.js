@@ -1,3 +1,5 @@
+import User from "./User";
+import User_class from "./User_class"
 const About=()=>{
 return(
     <div className="about-container">
@@ -18,6 +20,10 @@ return(
     
     <h2>Our Team</h2>
     <p>We are a passionate group of food enthusiasts, tech lovers, and customer care experts who work tirelessly to bring you the best food delivery service. Every meal you order is our top priority.</p>
+   <div className="userCards">
+   <User name={"Naushin(Function)"} Location={"Banglore"}/>
+   <User_class  name={"Kira(Class)"} Location={"Japan"}/>
+   </div>
     
     <h2>Our Promise</h2>
     <p>At <strong>Swiggy Clone</strong>, we promise fast, reliable, and delicious food deliveries, helping you enjoy your meals without any hassle. We’re constantly improving our services to offer the best possible experience.</p>

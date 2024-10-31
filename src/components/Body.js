@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Body = () => {
   const [ListofRest, setListofRest] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
-  const [searchtext, setsearchtext] = useState(""); 
+  const [searchtext, setsearchtext] = useState([]); 
   const [loading, setLoading] = useState(true); 
 
   useEffect(() => {

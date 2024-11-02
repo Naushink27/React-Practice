@@ -5,27 +5,34 @@
      console.log(props)
      console.log("Child Constructor")
      this.state={
-        count:0,
-        count2:2
+     userInfo: {
+        user:"Dummy",
+        public_repos:"Default",
+        url:"https/www.dummy.com"
+      }
+     
+
      }
     }
-    componentDidMount(){
-      console.log("Child Mount")
+   async componentDidMount(){
+      // console.log("Child Mount")
+      const data=await fetch("https://api.github.com/users/Naushink27")
+      const json= await data.json();
+      console.log(json)
+      this.setState({
+           userInfo:json,
+    } );
     }
     render(){
-      const{name,Location}=this.props;
-      const {count}=this.state;
+      const{name,public_repos,avatar_url}=this.state.userInfo;
+      
       console.log("Child render")  
         return (
             <div className="user_Card">
               <h2>Name: {name}</h2>
-              <h3>Count:{count}</h3>
-              <button onClick={()=>{
-               this.setState({
-                count:this.state.count+1,
-               })
-              }}>Count Increase</button>
-              <h3>Location: {Location}</h3>
+         <img src={avatar_url}></img>
+              
+              <h3>public_repos: {public_repos}</h3>
               <h4>Email: nausink2709@gmail.com</h4>
             </div>
             

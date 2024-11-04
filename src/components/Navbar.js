@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Logo_URL } from "./utils";
 import { Link } from "react-router-dom";
-
+import useOnlineStatus from "./useOnlineStatus";
 const Navbar = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
 
   const toggleButton = () => {
     setBtnNameReact(prevName => (prevName === "Login" ? "Logout" : "Login"));
   };
-
+const onlineStatus=useOnlineStatus();
   return (
     <nav className="NavContainer">
       <div className="LogoContainer">
@@ -16,6 +16,7 @@ const Navbar = () => {
       </div>
       <div className="Navitem">
         <ul className="item">
+          <li >status:{onlineStatus ? "🟢" : "🔴"}</li>
           <li><Link to="/">HOME</Link></li>
           <li><Link to="/contact">CONTACT US</Link></li>
           <li><Link to="/about">ABOUT US</Link></li>

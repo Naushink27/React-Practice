@@ -2,6 +2,7 @@ import RestrauntCard from "./RestrauntCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "./useOnlineStatus";
 const Body = () => {
   const [ListofRest, setListofRest] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
@@ -37,10 +38,15 @@ const Body = () => {
     const filtered = ListofRest.filter((res) => res.info.avgRating > 4);
     setFilteredList(filtered);
   };
-
+  const onlineStatus = useOnlineStatus();
+  if (!onlineStatus) {
+    return <h1>Something went wrong!!! Check your internet connection!!!</h1>;
+  }
   if (loading) {
     return <Shimmer />;
   }
+  
+
 
   return (
     <div className="bodyContainer">

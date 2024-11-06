@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Logo_URL } from "./utils";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./useOnlineStatus";
+
 const Navbar = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
 
@@ -19,8 +20,10 @@ const onlineStatus=useOnlineStatus();
           <li >status:{onlineStatus ? "🟢" : "🔴"}</li>
           <li><Link to="/">HOME</Link></li>
           <li><Link to="/contact">CONTACT US</Link></li>
+          <li><Link to="/grocery">Grocery</Link></li>
           <li><Link to="/about">ABOUT US</Link></li>
           <li><Link to="/cart">CART</Link></li> {/* Make it a Link if needed */}
+
           <li>
             <button className="login-btn" onClick={toggleButton}>
               {btnNameReact}

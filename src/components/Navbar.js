@@ -12,10 +12,10 @@ const Navbar = () => {
 const onlineStatus=useOnlineStatus();
   return (
     <nav className="NavContainer">
-      <div className="LogoContainer">
-        <img className="logo" src={Logo_URL} alt="Restaurant Logo" />
+      <div className="Logocontainer">
+        <img className=" logo "src={Logo_URL} alt="Restaurant Logo" />
       </div>
-      <div className="Navitem">
+      <div className=" Navitem">
         <ul className="item">
           <li >status:{onlineStatus ? "🟢" : "🔴"}</li>
           <li><Link to="/">HOME</Link></li>

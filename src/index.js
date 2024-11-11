@@ -1,6 +1,6 @@
 import React, { lazy,Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import Navbar from "./components/navbar";
+import Navbar from "./components/Navbar";
 import Body from "./components/Body";
 import { createBrowserRouter,RouterProvider ,Outlet} from "react-router-dom";
 // import About from "./components/About";
@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 // import Grocery from "./components/Grocery"; // Correct import for default export
+
 
 
 const About=lazy(()=>import("./components/About"))

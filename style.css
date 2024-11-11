@@ -1,3 +1,372 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+\.NavContainer {
+    position: relative; /* Allows z-index to work */
+    z-index: 1000; /* Ensures it's above other elements */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    border: 1px solid black;
+    padding: 0 2rem; /* Added padding for better spacing */
+  }
+  
+  .LogoContainer {
+    height: 100%; /* Ensures the logo container takes full height */
+  }
+  
+  .logo {
+    height: 100%;
+    width: auto; /* Ensures the logo scales proportionally */
+  }
+  
+  .Navitem {
+    display: flex;
+    align-items: center; /* Center the items vertically */
+  }
+  
+  .item {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    justify-content: center;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+  
+  .item li {
+    font-size: 25px;
+    /* Remove cursor: pointer from here */
+  }
+  
+  .item li a {
+    display: block; /* Makes the entire area of the li clickable */
+    text-decoration: none; /* Removes underline */
+    color: black; /* Set a specific color for visibility */
+    padding: 10px 15px; /* Add padding for better clickability */
+    border-radius: 4px; /* Optional: round the corners */
+    transition: background-color 0.3s; /* Smooth background change */
+  }
+  
+  .item li a:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Change background on hover */
+  }
+  
+  .bodyContainer {
+    margin-top: 2rem;
+    padding: 0 2rem; /* Added padding for better spacing */
+    max-height: 10000px; /* Control the maximum height */
+    overflow-y: scroll;
+    /* overflow-x: hidden; */ /* Uncomment if needed */
+  }
+  
+  .restrauntContainer {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+  }
+  
+  .card1 {
+    width: 250px; /* Set a fixed width for consistency */
+    background-color: #f0f0f0;
+    padding: 1rem; /* Add padding for content spacing */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: transform 0.2s, border 0.2s; /* Smooth transition */
+  }
+  
+  .card1:hover {
+    border: 2px solid black;
+    cursor: pointer;
+    transform: scale(1.05); /* Add a scale effect on hover */
+  }
+  
+  .resImg {
+    width: 100%; /* Ensure the image takes full width */
+    height: auto; /* Keep image proportions */
+    margin-bottom: 1rem; /* Add spacing below the image */
+  }
+  
+  .shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Adjust gap between cards */
+  }
+  
+  .shimmer-card {
+    width: 200px; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    background: #f0f0f0;
+    border-radius: 8px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+    
+    .shimmer-title,
+    .shimmer-image,
+    .shimmer-rating,
+    .shimmer-cost,
+    .shimmer-delivery,
+    .shimmer-cuisines {
+      background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+      background-size: 400% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 4px;
+    }
+    
+    .shimmer-title {
+      height: 20px;
+      width: 80%;
+      margin-bottom: 10px;
+    }
+    
+    .shimmer-image {
+      height: 150px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    
+    .shimmer-rating,
+    .shimmer-cost,
+    .shimmer-delivery,
+    .shimmer-cuisines {
+      height: 15px;
+      width: 60%;
+      margin-bottom: 5px;
+    }
+    
+    @keyframes shimmer {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: 0 0;
+      }
+    }
+    .login-btn {
+      background-color: #007BFF; /* Button background color */
+      color: white; /* Text color */
+      border: none; /* Remove default border */
+      border-radius: 4px; /* Rounded corners */
+      padding: 10px 20px; /* Vertical and horizontal padding */
+      font-size: 16px; /* Font size */
+      cursor: pointer; /* Pointer cursor on hover */
+      transition: background-color 0.3s ease, transform 0.2s; /* Smooth transition */
+    }
+    
+    .login-btn:hover {
+      background-color: #0056b3; /* Darker shade on hover */
+    }
+    
+    .login-btn:active {
+      transform: scale(0.95); /* Slightly shrink button on click */
+    }
+    .NavContainer {
+      display: flex;
+      justify-content: space-between; /* Space between logo and items */
+      align-items: center; /* Center items vertically */
+      padding: 10px 20px; /* Add some padding */
+      background-color: #f8f8f8; /* Background color for navbar */
+    }
+    
+    .logo {
+      width: 50px; /* Adjust logo size as needed */
+    }
+    
+    .Navitem {
+      display: flex; /* Align items horizontally */
+    }
+   
+    .login-btn {
+      background-color: #f0f0f0; /* Button background color */
+      color: black; /* Button text color */
+      border: none; /* No border */
+      border-radius: 4px; /* Rounded corners */
+      padding: 10px 15px; /* Padding for the button */
+      cursor: pointer; /* Pointer cursor on hover */
+      font-size: 16px; /* Font size */
+    }
+    
+    .login-btn:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+    }
+        
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+  }
+  
+  .about-container {
+      width: 80%;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+      text-align: center;
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 20px;
+  }
+  
+  h2 {
+      font-size: 28px;
+      color: #555;
+      margin-top: 30px;
+  }
+  
+  p {
+      font-size: 18px;
+      color: #666;
+      line-height: 1.6;
+  }
+  
+  
+  
+  
+  strong {
+      color: #e74c3c;
+  }
+  .contact-container {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 28px;
+    color: #555;
+    margin-top: 30px;
+  }
+  
+  p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  
+  
+  /* ul li:before {
+    content: "✔";
+    color: #e74c3c;
+    position: absolute;
+    left: 0;
+  } */
+  
+  form {
+    margin-top: 30px;
+  }
+  
+  label {
+    font-size: 18px;
+    color: #666;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #c0392b;
+  }
+  .menuContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .restaurantName {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .menuTable {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .menuTable__avgRating,
+  .menuTable__cost {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .menuList {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .menuList__item {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #e7f3ff;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  .user_Card{
+    padding: 10px;
+    border: 1px solid black;
+    background-color: #ddd;
+    width: 50%;
+  }
+  .userCards{
+    display: flex;
+  }
+  .Promote{
+    position:absolute;
+    background-color: #000;
+    color: white;
+     border-radius: 2px;
+  }

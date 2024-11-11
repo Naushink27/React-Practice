@@ -35,6 +35,17 @@ const RestrauntCard = (props) => {
       </div>
     </div>
   );
+
 };
+export const withPromoteLabel=(RestrauntCard)=>{
+  return(props)=>{
+    return(
+      <div>
+      <label className="Promote">Promote</label>
+      <RestrauntCard {...props}/>
+      </div>
+    )
+  }
+}
 
 export default RestrauntCard;

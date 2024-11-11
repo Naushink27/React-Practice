@@ -1,4 +1,4 @@
-import RestrauntCard from "./RestrauntCard"; 
+import RestrauntCard,{withPromoteLabel, withPromoteLabel} from "./RestrauntCard"; 
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -19,7 +19,7 @@ const Body = () => {
       const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
       const json = await data.json();
       console.log("Fetched Data:", json);
-
+  
       const dataApi = json?.data?.cards[4]?.card.card?.gridElements?.infoWithStyle?.restaurants;
       console.log("Parsed Restaurants:", dataApi);
 
@@ -33,7 +33,7 @@ const Body = () => {
       setLoading(false); // Stop loading
     }
   };
-
+const RestaurantCardPromoted=withPromoteLabel(RestrauntCard)
   const handleFilter = () => {
     const filtered = ListofRest.filter((res) => res.info.avgRating > 4);
     setFilteredList(filtered);
@@ -49,7 +49,7 @@ const Body = () => {
 
 
   return (
-    <div className="bodyContainer">
+    <div className="bodyContainer ">
       <div className="searchBar">
         <input
           className="Search-restraunt" 
@@ -70,8 +70,11 @@ const Body = () => {
           <p>No restaurants found.</p>
         ) : (
           filteredList.map((restaurants) => (
-            <Link key={restaurants.id} to={"/restaurants/" + restaurants.info.id}> 
+            <Link key={restaurants.id} to={"/restaurants/" + restaurants.info.id}> {
+            restaurants.info.
+            isOpen?(<RestaurantCardPromoted resData={restaurants} />):
             <RestrauntCard resData={restaurants} />
+}
           </Link>
           ))
         )}

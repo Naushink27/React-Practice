@@ -1,11 +1,11 @@
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantmenu from "./useRestaurantmenu";
-
+import RestaurantCategory from "./RestaurantCategory";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const ResInfo = useRestaurantmenu(resId);
-
+console.log(ResInfo)
   if (ResInfo === null) return <Shimmer />;
 
   // Update the path based on the actual structure
@@ -14,8 +14,14 @@ const RestaurantMenu = () => {
 
   // Adjust this path after checking the JSON structure
   const itemCards =
-    ResInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card?.card?.itemCards;
-
+  ResInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  const categories =
+    ResInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.["card"]?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+  console.log(categories);
   console.log("Item cards:", itemCards);
 
   if (itemCards) {
@@ -37,14 +43,11 @@ const RestaurantMenu = () => {
         <h1 className="menuTable__cost">{costForTwoMessage}</h1>
         <h1 className="menuTable__cuisines">{cuisines?.join(", ")}</h1>
       </div>
-      <h1>Recommended</h1>
-      <ul className="menuList">
-        {itemCards?.map((item, index) => (
-          <li key={index} className="menuList__item">
-            {item?.card?.info?.name}
-          </li>
-        ))}
-      </ul>
+      {categories.map((category, index) => (
+      <RestaurantCategory key={index} data={category.card.card} />
+    ))}
+     
+     
     </div>
   );
 };

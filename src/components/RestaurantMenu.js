@@ -2,38 +2,28 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantmenu from "./useRestaurantmenu";
 import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
+
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const ResInfo = useRestaurantmenu(resId);
-console.log(ResInfo)
+  const [showIndex, setShowIndex] = useState(null); // Initial state as null to indicate no section is expanded
+
   if (ResInfo === null) return <Shimmer />;
 
-  // Update the path based on the actual structure
+  // Extract restaurant info
   const { name, cuisines, costForTwoMessage, avgRating } =
     ResInfo?.cards?.[2]?.card?.card?.info || {};
 
-  // Adjust this path after checking the JSON structure
+  // Extract item cards and categories
   const itemCards =
-  ResInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+    ResInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
   const categories =
     ResInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
         c.card?.["card"]?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
-  console.log(categories);
-  console.log("Item cards:", itemCards);
-
-  if (itemCards) {
-    itemCards.forEach((item) => {
-      const itemName = item?.card?.info?.name;
-      if (itemName) {
-        console.log(itemName);
-      }
-    });
-  } else {
-    console.log("No item cards found");
-  }
 
   return (
     <div className="menuContainer">
@@ -43,11 +33,17 @@ console.log(ResInfo)
         <h1 className="menuTable__cost">{costForTwoMessage}</h1>
         <h1 className="menuTable__cuisines">{cuisines?.join(", ")}</h1>
       </div>
+
+      {/* Render RestaurantCategory for each category */}
       {categories.map((category, index) => (
-      <RestaurantCategory key={index} data={category.card.card} />
-    ))}
-     
-     
+      <RestaurantCategory
+      key={category?.card?.card.title}
+      data={category?.card?.card}
+      showItems={index === showIndex}  // Show items only for the selected index
+      setShowIndex={setShowIndex}  // Pass the setShowIndex function down
+      index={index}  // Pass the index to the RestaurantCategory component
+    />
+      ))}
     </div>
   );
 };

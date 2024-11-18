@@ -1,10 +1,13 @@
 import { useState } from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({ data, showItems, setShowIndex,index }) => {
+
+const RestaurantCategory = ({data,showItems,SetShowIndex}) => {
+ 
     const handleClick = () => {
-        console.log("Clicked category, setting index:", index); // Log category index
-        setShowIndex((prevIndex) => (prevIndex === index ? null : index));
+        // console.log("Clicked category, setting index:"); // Log category index
+        //      setShowItems(!showItems)
+        SetShowIndex();
       };
       
       console.log("showItems in category:", showItems); // Check showItems value
@@ -18,7 +21,7 @@ const RestaurantCategory = ({ data, showItems, setShowIndex,index }) => {
         <span>⬇️</span>
       </div>
       {/* Show items only if `showItems` is true */}
-      {showItems && <ItemList items={data.itemCards} />}
+      {showItems && <ItemList items={data?.itemCards}  />}
     </div>
   );
 };

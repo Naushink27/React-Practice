@@ -7,8 +7,7 @@ import { useState } from "react";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const ResInfo = useRestaurantmenu(resId);
-  const [showIndex, setShowIndex] = useState(null); // Initial state as null to indicate no section is expanded
-
+ const [showIndex,SetShowIndex]=useState(null);
   if (ResInfo === null) return <Shimmer />;
 
   // Extract restaurant info
@@ -39,9 +38,8 @@ const RestaurantMenu = () => {
       <RestaurantCategory
       key={category?.card?.card.title}
       data={category?.card?.card}
-      showItems={index === showIndex}  // Show items only for the selected index
-      setShowIndex={setShowIndex}  // Pass the setShowIndex function down
-      index={index}  // Pass the index to the RestaurantCategory component
+      showItems={index==showIndex && true}
+      SetShowIndex={()=>SetShowIndex(index)}
     />
       ))}
     </div>

@@ -8,17 +8,21 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 // import Grocery from "./components/Grocery"; // Correct import for default export
-
+import { Provider } from "react-redux";
+import appStore from "./components/appStore";
+import Cart from "./components/Cart";
 
 
 const About=lazy(()=>import("./components/About"))
 const Grocery= lazy(()=> import("./components/Grocery"));
 const Applayout = () => {
   return (
+    <Provider store={appStore}>
     <div className="Main-container">
       <Navbar />
     <Outlet />
     </div>
+    </Provider> 
   );
 };
 // console.log(reslist);
@@ -47,6 +51,10 @@ const appRouter=createBrowserRouter(
       {
         path:"/restaurants/:resId",
         element:<RestaurantMenu/>
+      },
+      {
+        path:"/cart",
+        element:<Cart/>
       }
     ],
     errorElement:<Error/>

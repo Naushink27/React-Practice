@@ -4,8 +4,8 @@ import { Img_URL } from "./utils";
 
 const ItemList = ({ items}) => {
   const dispatch=useDispatch();
-const handleAddItem=()=>{
-  dispatch(addItem(items))
+const handleAddItem=(item)=>{
+  dispatch(addItem(item))
 }
 console.log("Item",items)
   return (

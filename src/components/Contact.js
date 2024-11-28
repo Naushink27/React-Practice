@@ -6,7 +6,7 @@ const Contact = () => {
       <h1>Contact Us</h1>
       <p>If you have any questions, feedback, or suggestions, feel free to reach out to us. We're here to help you!</p>
 
-      <h2>Get in Touch</h2>
+     
       <p>Our customer support is available 24/7 to assist you with anything you need.</p>
 
       <ul>
@@ -15,7 +15,7 @@ const Contact = () => {
         <li><strong>Address:</strong> 123 Food Street, Gourmet City, USA</li>
       </ul>
 
-      <h2>Follow Us</h2>
+      
       <p>Stay connected with us on social media:</p>
 
       <ul>
@@ -24,7 +24,6 @@ const Contact = () => {
         <li><strong>Twitter:</strong> twitter.com/swiggyclone</li>
       </ul>
 
-      <h2>Feedback Form</h2>
       <p>Have any feedback? Fill out the form below, and we'll get back to you!</p>
 
       <form>
